@@ -459,7 +459,7 @@ var _ Ticker = LogTicks{}
 // Ticks returns Ticks in a specified range
 func (LogTicks) Ticks(min, max float64) []Tick {
 	if min <= 0 {
-		panic("Values must be greater than 0 for a log scale.")
+		min = 1
 	}
 
 	val := math.Pow10(int(math.Log10(min)))
@@ -601,7 +601,7 @@ func tickLabelWidth(sty draw.TextStyle, ticks []Tick) vg.Length {
 
 func log(x float64) float64 {
 	if x <= 0 {
-		panic("Values must be greater than 0 for a log scale.")
+		x = 1
 	}
 	return math.Log(x)
 }
